@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use these results or the method, please cite this repository."
+title: "Two open unit-fraction questions answered with machine-checked certificates: an odd solution of Znám's problem and a solution of the coprime variant of Erdős Problem #307"
+authors:
+  - family-names: Phillips
+    given-names: Doug
+date-released: 2026-11-25
+version: 1.0.0
+license: Apache-2.0
+keywords:
+  - Znám's problem
+  - Erdős problem 307
+  - Egyptian fractions
+  - unit fractions
+  - Lean 4
+  - formal verification
+abstract: >-
+  An explicit solution of Znám's problem consisting of 24 odd integers, and a solution of the coprime,
+  1-excluded variant of Erdős Problem #307, both found by a residue-steered implicit descent and verified in
+  Lean 4 (kernel-checked, standard axioms only). Developed with AI assistance (Claude, Anthropic; see README).
