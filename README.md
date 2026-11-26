@@ -80,7 +80,11 @@ docs/               METHOD.md, PRIOR_ART.md
 
 ## Credits and AI use
 
-Directed by Doug Phillips. The work was done with AI systems, and we disclose that plainly:
+**Author contributions ([CRediT](https://credit.niso.org/)).** Doug Phillips: Conceptualization, Project administration, Supervision, Validation, Resources, Writing – review & editing.
+
+**AI use.** Software, formal analysis, investigation, data curation and original drafting were done by AI agents (Claude, Anthropic) directed by Doug Phillips. AI systems cannot be authors. Correctness rests on Lean kernel checks, independently re-verified by the Palomar registry, and on independent verifier programs, not on trust in any author or model.
+
+In more detail:
 
 - **Claude (Anthropic):** the reductions and the Lean library, the residue checkers and their soundness proofs, the verifiers, and the Giuga and value-2 adaptations.
 - **A second Claude session:** the residue-only beam searches that found the certificates (`search/`), and an independent verifier.
