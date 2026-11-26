@@ -57,8 +57,8 @@ theorem sol_identity :
 theorem odd_giuga_sequence :
     ∃ S : Finset ℕ, S.card = 26 ∧ (∀ x ∈ S, Odd x ∧ 1 < x) ∧
       (∀ x ∈ S, x ∣ (∏ y ∈ S.erase x, y) - 1) ∧
-      ∃ v : ℕ, 0 < v ∧ (∑ x ∈ S, (x : ℚ)⁻¹) - (∏ x ∈ S, (x : ℚ))⁻¹ = v := by
-  refine ⟨sol.toFinset, ?_, ?_, ?_, 1, one_pos, ?_⟩
+      (∑ x ∈ S, (x : ℚ)⁻¹) - (∏ x ∈ S, (x : ℚ))⁻¹ = 1 := by
+  refine ⟨sol.toFinset, ?_, ?_, ?_, ?_⟩
   · decide +kernel
   · intro x hx
     have h : ∀ x ∈ sol, x % 2 = 1 ∧ 1 < x := by decide +kernel
