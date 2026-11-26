@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use these results or the method, please cite this repository."
-title: "Two open unit-fraction questions answered with machine-checked certificates: an odd solution of Znám's problem and a solution of the coprime variant of Erdős Problem #307"
+title: "Six open unit-fraction questions answered with machine-checked certificates: Erdős #307 (coprime variant), odd Znám, odd Giuga, Brenton–Hill n₀ = 2, and Borwein et al. Problems 7 and 8"
 authors:
   - family-names: Phillips
     given-names: Doug
