@@ -6,7 +6,7 @@ and a Lean 4 proof checked by Lean's kernel. Only the standard axioms are used (
 
 | Result | Status before | Lean theorem |
 |---|---|---|
-| **An odd solution of Znám's problem.** 24 odd integers, each a proper divisor of the product of the others plus 1. | Open since at least 1988 (Brenton–Hill). "It is unknown whether there are any solutions to Znám's problem using only odd numbers" (Wikipedia, 2005–2026). | `ZnamOdd.odd_znam_solution` |
+| **An odd solution of Znám's problem.** 24 odd integers, each a proper divisor of the product of the others plus 1. | No all-odd solution was known (Brenton–Joo 1995). Brenton–Hill (1988) proved that one needs at least 12 terms. Wikipedia, 2005–2026: "It is unknown whether there are any solutions to Znám's problem using only odd numbers". | `ZnamOdd.odd_znam_solution` |
 | **A solution of the coprime, 1-excluded variant of Erdős Problem #307.** Finite sets P, Q of integers > 1, each pairwise coprime, 1 ∉ P ∪ Q, with (Σ_{p∈P} 1/p)(Σ_{q∈Q} 1/q) = 1. | Listed as research open, "no examples known", in google-deepmind/formal-conjectures (`erdos_307.variants.coprime_one_notMem`). | `Erdos307.coprime_one_notMem_solved` |
 
 Neither result touches the prime versions: Erdős #307 for primes, and odd primary pseudoperfect numbers. Both remain

@@ -39,7 +39,8 @@ witnesses.
 ## Odd solution of Znám's problem
 
 - **Brenton & Hill 1988:** an all-odd solution needs at least 12 terms, and the number of terms is ≡ 0 (mod 4). Ours
-  has 24 terms, which satisfies both. Their Open Question 2 asks whether all terms can be odd.
+  has 24 terms, which satisfies both. (Their open question 2 asks something different: whether every starting set can be completed using odd
+  integers.)
 - **Brenton & Joo 1995:** no all-odd solution was known, for either the proper or the improper system.
 - **Known lists** (Brenton–Vasiliu for k = 5–8; MathWorld; OEIS A075441, A075461, A054377): every listed solution
   contains an even term.
