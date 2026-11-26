@@ -1,117 +1,93 @@
 # Six open unit-fraction questions, answered with machine-checked certificates
 
-This repository contains six results found on 25 November 2026, each with a certificate that you can check yourself
-and a Lean 4 proof checked by Lean's kernel. Only the standard axioms are used (`propext`, `Classical.choice`,
-`Quot.sound`). There is no `sorry` and no `native_decide`.
+Six results found on 25 November 2026. Each comes with a certificate you can check yourself and a Lean 4 proof checked by Lean's kernel, using only the standard axioms (`propext`, `Classical.choice`, `Quot.sound`), with no `sorry` and no `native_decide`.
 
-| Result | Status before | Lean theorem |
+| # | Result | Size |
 |---|---|---|
-| **An odd solution of Znám's problem.** 24 odd integers, each a proper divisor of the product of the others plus 1. | No all-odd solution was known (Brenton–Joo 1995). Brenton–Hill (1988) proved that one needs at least 12 terms. Wikipedia, 2005–2026: "It is unknown whether there are any solutions to Znám's problem using only odd numbers". | `ZnamOdd.odd_znam_solution` |
-| **A solution of the coprime, 1-excluded variant of Erdős Problem #307.** Finite sets P, Q of integers > 1, each pairwise coprime, 1 ∉ P ∪ Q, with (Σ_{p∈P} 1/p)(Σ_{q∈Q} 1/q) = 1. | Listed as research open, "no examples known", in google-deepmind/formal-conjectures (`erdos_307.variants.coprime_one_notMem`). | `Erdos307.coprime_one_notMem_solved` |
-| **An odd Giuga sequence.** 26 odd integers with Σ1/x − 1/∏x = 1; each divides (product of the others) − 1. | Borwein–Borwein–Borwein–Girgensohn, Amer. Math. Monthly 103 (1996), Problem 3: "Find a Giuga sequence which consists of odd factors … only". Brenton–Joo (1995): "no solution … is known with each nᵢ odd". | `GiugaOdd.odd_giuga_sequence` |
-| **Brenton–Hill's equation with n₀ = 2.** 888 pairwise-coprime integers ≥ 2 with Σ1/x + 1/∏x = 2. | Brenton–Hill (1988): "no solution to (2) is known for n₀ > 1". Brenton–Vasiliu (2002): "an unsolved problem". | `Erdos307.ValueTwoSolution.brentonHill_value_two` |
-| **A Giuga sequence of value 2.** Σ1/x − 1/∏x = 2. | BBBG (1996), Problem 7: "Are there Giuga sequences with a sum minus product value higher than 1?" | `Erdos307.ValueTwoSolution.giuga_value_two` |
-| **Two distinct Giuga sequences with the same product.** | BBBG (1996), Problem 8. | `Erdos307.ValueTwoSolution.giuga_same_product` |
+| 1 | A solution of the **coprime, 1-excluded variant of Erdős Problem #307** | 973 integers (implicit) |
+| 2 | An **odd solution of Znám's problem** | 24 integers (explicit) |
+| 3 | An **odd Giuga sequence** | 26 integers (explicit) |
+| 4 | A solution of **Brenton–Hill's equation with n₀ = 2** | 888 integers (implicit) |
+| 5 | A **Giuga sequence of value 2** | 889 integers (implicit) |
+| 6 | **Two distinct Giuga sequences with the same product** | 887 and 889 integers (implicit) |
 
-The last three come from one implicit chain of 830 steps; see `value-two/README.md`.
+None of these touches the prime versions (Erdős #307 for primes, odd primary pseudoperfect numbers, odd Giuga numbers, Giuga's conjecture). All of those remain open.
 
-None of these results touches the prime versions: Erdős #307 for primes, odd primary pseudoperfect numbers, odd
-Giuga numbers, and Giuga's conjecture. All remain open. Please treat these as **new claims awaiting independent review**. Corrections and prior art we missed are very
-welcome (open an issue).
+Please treat these as **new claims awaiting independent review**. Corrections, and prior art we missed, are very welcome: open an issue.
+
+## The questions, and where they were posed
+
+1. **Erdős #307, coprime variant.** Find finite sets P, Q of integers > 1, each pairwise coprime, with 1 ∉ P ∪ Q and (Σ 1/p)(Σ 1/q) = 1. It is listed as research open, with "no examples known", in google-deepmind/formal-conjectures (`erdos_307.variants.coprime_one_notMem`) and on erdosproblems.com/307.
+2. **Odd Znám.** Find odd integers > 1, each a proper divisor of (product of the others) + 1. Brenton–Joo (1995) wrote that "no solution … is known with each nᵢ odd". Brenton–Hill (1988) showed that one needs at least 12 terms. Wikipedia, 2005–2026, says "It is unknown whether there are any solutions to Znám's problem using only odd numbers".
+3. **Odd Giuga sequence.** Find odd integers with Σ 1/x − 1/∏x a positive integer. This is Borwein–Borwein–Borwein–Girgensohn, *Amer. Math. Monthly* 103 (1996), Problem 3. Brenton–Joo (1995) also note that none was known.
+4. **Brenton–Hill, n₀ = 2.** Find pairwise-coprime integers ≥ 2 with Σ 1/x + 1/∏x = 2. Brenton–Hill (1988) write that "no solution to (2) is known for n₀ > 1"; Brenton–Vasiliu (2002) call it "an unsolved problem".
+5. **Giuga value 2.** BBBG (1996), Problem 7: "Are there Giuga sequences with a sum minus product value higher than 1?"
+6. **Same product.** BBBG (1996), Problem 8: "Are there two distinct Giuga sequences whose elements have the same product?"
 
 ## Check it yourself
 
-**Odd Znám, in seconds, with plain Python** (no dependencies):
+| Result | Command | Needs |
+|---|---|---|
+| Odd Znám | `python3 odd-znam/check.py` | plain Python |
+| Odd Giuga | `python3 odd-giuga/check.py` | plain Python |
+| Erdős #307 | `python3 erdos307-coprime/verify_chain.py erdos307-coprime/certificate.txt` | `pip install gmpy2` |
+| Erdős #307 (second verifier) | `python3 erdos307-coprime/verify_independent.py erdos307-coprime/certificate.txt` | plain Python |
+| Results 4–6 | `python3 value-two/verify_chain.py value-two/certificate.txt` | `gmpy2` |
 
-```
-python3 odd-znam/check.py
-```
+The explicit results (2, 3) are checked straight from the definition; the largest numbers have 62,037 and 351,997 digits. The implicit results (1, 4–6) have elements far too large to write down. Each is given by a list of small numbers (the *deviations*), and every property is certified from residues. See `erdos307-coprime/README.md` and `value-two/README.md`.
 
-This reads the 24 numbers in `odd-znam/odd_znam_solution.txt` (the largest has 62,037 digits) and checks, directly from
-the definition, that each is odd, greater than 1, divides (product of the others) + 1, and is not equal to it. A PARI/GP
-version is in `odd-znam/check.gp`.
-
-**Erdős #307 coprime variant.** This solution has 973 elements, most of them far too large to write down; the largest
-has more than 5.9·10²⁸¹ digits. It is given implicitly by a list of 914 small numbers (the *deviations*), and every
-required property is certified from residues. See `erdos307-coprime/README.md`.
-
-```
-pip install gmpy2
-python3 erdos307-coprime/verify_chain.py --selftest
-python3 erdos307-coprime/verify_chain.py erdos307-coprime/certificate.txt
-python3 erdos307-coprime/verify_independent.py erdos307-coprime/certificate.txt
-```
-
-**Odd Giuga sequence, plain Python:** `python3 odd-giuga/check.py`. It checks the 26 numbers (the largest has 351,997
-digits) directly from the definition.
-
-**Value-2 results:** `python3 value-two/verify_chain.py value-two/certificate.txt`. It certifies the 830-step chain
-from residues (`gmpy2` needed).
-
-**Lean (all six results):**
+**Lean, all six:**
 
 ```
 cd lean
 lake exe cache get
 lake build
-# then, in a Lean file:  #print axioms ZnamOdd.odd_znam_solution
-#                        #print axioms Erdos307.coprime_one_notMem_solved
-#                        #print axioms GiugaOdd.odd_giuga_sequence
-#                        #print axioms Erdos307.ValueTwoSolution.giuga_same_product   (and the other two)
 ```
+
+| Result | Lean theorem |
+|---|---|
+| 1 | `Erdos307.coprime_one_notMem_solved` |
+| 2 | `ZnamOdd.odd_znam_solution` |
+| 3 | `GiugaOdd.odd_giuga_sequence` |
+| 4 | `Erdos307.ValueTwoSolution.brentonHill_value_two` |
+| 5 | `Erdos307.ValueTwoSolution.giuga_value_two` |
+| 6 | `Erdos307.ValueTwoSolution.giuga_same_product` |
+
+Results 1 and 2 have also been independently re-verified by the [Palomar](https://palomar-registry.org/) registry, using three separate proof kernels.
 
 ## How it was found
 
-Both results come from one method, a **residue-steered implicit descent**, described in `docs/METHOD.md`. In short:
+All six come from one method, a **residue-steered implicit descent** (details in `docs/METHOD.md`):
 
-- Grow a set of pairwise coprime integers one element at a time. Each step replaces the current "deviation" D (how far
-  the reciprocal sum is from the target, scaled) with a freely chosen new deviation D′ ≡ −E (mod D). A wide beam
-  search steers D down to 1.
-- The elements grow doubly exponentially, so they are never written down. A state is stored as its list of small
-  deviations, and every condition (integrality, coprimality, oddness) is certified from residues.
-- For Znám's problem the descent closed in 16 steps from the seed of odd primes {3, 5, 7, 11, 13, 17, 19, 23}, small enough to write the
-  solution out in full. For Erdős #307 it took 913 steps from the seed Q = {2, 3, 7, 41}, P₀ = primes 5..271. A Lean
-  "closing lemma" then adds one element to each side.
-- The Lean proof of the #307 result proves a residue checker sound, by induction along the chain, and lets the kernel
-  run it on the certificate.
+- **Steering.** Grow a set of pairwise-coprime integers one element at a time. Each step replaces the current *deviation* D (how far the reciprocal sum is from the target, scaled) with a freely chosen D′ ≡ −E (mod D). A wide beam search steers D to the target: +1 for Znám-type, −1 for Giuga-type.
+- **Implicit state.** The elements grow doubly exponentially, so they are never written down. A state is just its list of deviations, and integrality, coprimality and oddness are certified from residues.
+- **Formal check.** A Lean checker, proved sound by induction along the chain, is run on each certificate by the kernel.
+- **The value-2 trick.** Since 1/2 + 1/3 + 1/5 = 1 + 1/30, swapping 30 for {2, 3, 5} raises the value by exactly 1 and keeps the product. So one 830-step chain gives results 4, 5 and 6.
 
-The single step, and the "remainder" bookkeeping it uses, go back to Brenton & Hill (1988), Brenton & Bruner (1994)
-and Brenton & Joo (1995). What we believe is new is the long, search-steered descent through arbitrary deviations, its
-implicit representation and residue certification, and the formal check. See `docs/PRIOR_ART.md`.
+The single step goes back to Brenton & Hill (1988), Brenton & Bruner (1994) and Brenton & Joo (1995). What we believe is new is the long, search-steered descent through arbitrary deviations, its implicit representation and residue certification, and the formal check. See `docs/PRIOR_ART.md`.
 
 ## Repository layout
 
 ```
-odd-znam/            the 24 numbers, check.py, check.gp
-erdos307-coprime/    certificate.txt (914 deviations), two independent verifiers, README
-odd-giuga/           the 26 numbers, check.py
-value-two/           certificate.txt (831 deviations), verifier, README
-lean/                Lean 4 + Mathlib project: both theorems and the support library
-search/              the search programs (beam descents in C, closing search in Python)
-docs/                METHOD.md, PRIOR_ART.md
+erdos307-coprime/   result 1: certificate (914 deviations), two verifiers
+odd-znam/           result 2: the 24 numbers, check.py, check.gp
+odd-giuga/          result 3: the 26 numbers, check.py
+value-two/          results 4-6: certificate (831 deviations), verifier
+lean/               Lean 4 + Mathlib: all six theorems and the support library
+search/             the search programs (beam descents in C, closing search in Python)
+docs/               METHOD.md, PRIOR_ART.md
 ```
 
 ## Credits and AI use
 
 Directed by Doug Phillips. The work was done with AI systems, and we disclose that plainly:
-- **Claude (Anthropic):**
-  - the reductions and Lean library (forcing, closing lemma, descent framework);
-  - the residue checker and its soundness proof;
-  - the independent verifier `verify_chain.py` and the closing search;
-  - the explicit verification of the Znám solution.
-- **A second Claude session:** the residue-only beam search that found both certificates (`search/beamc.c`,
-  `search/beamz.c`), and the independent verifier `verify_independent.py`.
-- **Gemini (Google):** earlier rounds of the surrounding project (lower bounds, obstruction results), not included
-  here.
 
-Correctness does not rest on trusting any model. The Znám solution is checked by a short script anyone can read; the
-#307 result is checked by Lean's kernel.
+- **Claude (Anthropic):** the reductions and the Lean library, the residue checkers and their soundness proofs, the verifiers, and the Giuga and value-2 adaptations.
+- **A second Claude session:** the residue-only beam searches that found the certificates (`search/`), and an independent verifier.
+- **Gemini (Google):** earlier rounds of the surrounding project (lower bounds and obstruction results), not included here.
 
-## License
+Correctness does not rest on trusting any model: the explicit results are checked by short scripts anyone can read, and all six are checked by Lean's kernel.
 
-Code (`*.py`, `*.c`, `*.gp`, `*.lean`) is under the Apache License 2.0 (`LICENSE`). Data and documentation
-(`*.txt` certificates, `*.md`) are under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+## License and citation
 
-## Citation
-
-See `CITATION.cff`.
+Code (`*.py`, `*.c`, `*.gp`, `*.lean`) is under the Apache License 2.0 (`LICENSE`). Data and documentation (`*.txt`, `*.md`) are under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). To cite, see `CITATION.cff`.
