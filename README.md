@@ -53,7 +53,7 @@ lake build
 | 5 | `Erdos307.ValueTwoSolution.giuga_value_two` |
 | 6 | `Erdos307.ValueTwoSolution.giuga_same_product` |
 
-Results 1 and 2 have also been independently re-verified by the [Palomar](https://palomar-registry.org/) registry, using three separate proof kernels.
+Results 1 and 2 are registered in the [Palomar](https://palomar-registry.org/) registry as [PALOMAR-2026-11-26-000045](https://palomar-registry.org/entry.html?id=PALOMAR-2026-11-26-000045), independently re-verified with three separate proof kernels.
 
 ## How it was found
 
