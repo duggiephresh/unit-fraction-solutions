@@ -1,6 +1,6 @@
-# Two open unit-fraction questions, answered with machine-checked certificates
+# Six open unit-fraction questions, answered with machine-checked certificates
 
-This repository contains two results found on 25 November 2026, each with a certificate that you can check yourself
+This repository contains six results found on 25 November 2026, each with a certificate that you can check yourself
 and a Lean 4 proof checked by Lean's kernel. Only the standard axioms are used (`propext`, `Classical.choice`,
 `Quot.sound`). There is no `sorry` and no `native_decide`.
 
@@ -8,9 +8,15 @@ and a Lean 4 proof checked by Lean's kernel. Only the standard axioms are used (
 |---|---|---|
 | **An odd solution of Znám's problem.** 24 odd integers, each a proper divisor of the product of the others plus 1. | No all-odd solution was known (Brenton–Joo 1995). Brenton–Hill (1988) proved that one needs at least 12 terms. Wikipedia, 2005–2026: "It is unknown whether there are any solutions to Znám's problem using only odd numbers". | `ZnamOdd.odd_znam_solution` |
 | **A solution of the coprime, 1-excluded variant of Erdős Problem #307.** Finite sets P, Q of integers > 1, each pairwise coprime, 1 ∉ P ∪ Q, with (Σ_{p∈P} 1/p)(Σ_{q∈Q} 1/q) = 1. | Listed as research open, "no examples known", in google-deepmind/formal-conjectures (`erdos_307.variants.coprime_one_notMem`). | `Erdos307.coprime_one_notMem_solved` |
+| **An odd Giuga sequence.** 26 odd integers with Σ1/x − 1/∏x = 1; each divides (product of the others) − 1. | Borwein–Borwein–Borwein–Girgensohn, Amer. Math. Monthly 103 (1996), Problem 3: "Find a Giuga sequence which consists of odd factors … only". Brenton–Joo (1995): "no solution … is known with each nᵢ odd". | `GiugaOdd.odd_giuga_sequence` |
+| **Brenton–Hill's equation with n₀ = 2.** 888 pairwise-coprime integers ≥ 2 with Σ1/x + 1/∏x = 2. | Brenton–Hill (1988): "no solution to (2) is known for n₀ > 1". Brenton–Vasiliu (2002): "an unsolved problem". | `Erdos307.ValueTwoSolution.brentonHill_value_two` |
+| **A Giuga sequence of value 2.** Σ1/x − 1/∏x = 2. | BBBG (1996), Problem 7: "Are there Giuga sequences with a sum minus product value higher than 1?" | `Erdos307.ValueTwoSolution.giuga_value_two` |
+| **Two distinct Giuga sequences with the same product.** | BBBG (1996), Problem 8. | `Erdos307.ValueTwoSolution.giuga_same_product` |
 
-Neither result touches the prime versions: Erdős #307 for primes, and odd primary pseudoperfect numbers. Both remain
-open. Please treat these as **new claims awaiting independent review**. Corrections and prior art we missed are very
+The last three come from one implicit chain of 830 steps; see `value-two/README.md`.
+
+None of these results touches the prime versions: Erdős #307 for primes, odd primary pseudoperfect numbers, odd
+Giuga numbers, and Giuga's conjecture. All remain open. Please treat these as **new claims awaiting independent review**. Corrections and prior art we missed are very
 welcome (open an issue).
 
 ## Check it yourself
@@ -36,7 +42,13 @@ python3 erdos307-coprime/verify_chain.py erdos307-coprime/certificate.txt
 python3 erdos307-coprime/verify_independent.py erdos307-coprime/certificate.txt
 ```
 
-**Lean (both results):**
+**Odd Giuga sequence, plain Python:** `python3 odd-giuga/check.py`. It checks the 26 numbers (the largest has 351,997
+digits) directly from the definition.
+
+**Value-2 results:** `python3 value-two/verify_chain.py value-two/certificate.txt`. It certifies the 830-step chain
+from residues (`gmpy2` needed).
+
+**Lean (all six results):**
 
 ```
 cd lean
@@ -44,6 +56,8 @@ lake exe cache get
 lake build
 # then, in a Lean file:  #print axioms ZnamOdd.odd_znam_solution
 #                        #print axioms Erdos307.coprime_one_notMem_solved
+#                        #print axioms GiugaOdd.odd_giuga_sequence
+#                        #print axioms Erdos307.ValueTwoSolution.giuga_same_product   (and the other two)
 ```
 
 ## How it was found
@@ -70,6 +84,8 @@ implicit representation and residue certification, and the formal check. See `do
 ```
 odd-znam/            the 24 numbers, check.py, check.gp
 erdos307-coprime/    certificate.txt (914 deviations), two independent verifiers, README
+odd-giuga/           the 26 numbers, check.py
+value-two/           certificate.txt (831 deviations), verifier, README
 lean/                Lean 4 + Mathlib project: both theorems and the support library
 search/              the search programs (beam descents in C, closing search in Python)
 docs/                METHOD.md, PRIOR_ART.md
