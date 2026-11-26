@@ -80,9 +80,9 @@ docs/               METHOD.md, PRIOR_ART.md
 
 ## Credits and AI use
 
-**Author contributions ([CRediT](https://credit.niso.org/)).** Doug Phillips: Conceptualization, Project administration, Supervision, Validation, Resources, Writing – review & editing.
+**How this was produced.** The mathematics here (methods, searches, proofs, verifiers and drafting) was produced by AI agents (Claude, Anthropic). Doug Phillips ran the project: he set the goals, directed the work, and is responsible for publishing it and for corrections. He did not independently verify the mathematics. In [CRediT](https://credit.niso.org/) terms his roles are Project administration, Resources, and Conceptualization in the sense of setting the research goals. Following the Leiden Declaration, AI systems are not listed as authors.
 
-**AI use.** Software, formal analysis, investigation, data curation and original drafting were done by AI agents (Claude, Anthropic) directed by Doug Phillips. AI systems cannot be authors. Correctness rests on Lean kernel checks, independently re-verified by the Palomar registry, and on independent verifier programs, not on trust in any author or model.
+**Verification and review.** Correctness of the stated theorems rests on Lean kernel checks, independently re-verified by the Palomar registry with three separate kernels, and on independent verifier programs. **No human mathematician has yet reviewed this work.** Expert review and corrections are very welcome.
 
 In more detail:
 
