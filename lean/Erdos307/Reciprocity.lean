@@ -12,6 +12,12 @@ elements of `S` that are `≡ 3 (mod 4)`.
 Proof: multiply the Jacobi symbols `J(N_x, x)` over `x ∈ S`, where `N_x = ∏_{y ≠ x} y`.
 By quadratic reciprocity the double product equals `(-1)^(a choose 2)`; by the congruence
 `N_x ≡ ∓1 (mod x)` it equals `(-1)^a` (Znám) or `1` (Giuga). Compare parities.
+
+Prior work: the Giuga-type rule for the *prime* factors of a counterexample to Giuga's conjecture
+was proved earlier in Lean by T. B. Hughes, `giuga_reciprocity_rule` in
+[PALOMAR-2026-11-26-000006](https://palomar-registry.org/entry.html?id=PALOMAR-2026-11-26-000006).
+The versions here use Jacobi symbols, so they apply to pairwise-coprime sets of odd integers that
+need not be prime, and they add the Znám type.
 -/
 
 namespace Erdos307.Reciprocity
